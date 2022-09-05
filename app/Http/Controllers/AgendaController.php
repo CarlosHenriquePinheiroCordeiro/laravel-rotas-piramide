@@ -14,6 +14,9 @@ class AgendaController extends Controller
     public function index()
     {
         session_start();
+        if (!isset($_SESSION['agenda'])) {
+            $_SESSION['agenda'] = [];
+        }
         $dados = $_SESSION['agenda'];
         return view('agenda.index', compact('dados'));
     }
@@ -47,7 +50,7 @@ class AgendaController extends Controller
         session_start();
         $_SESSION['agenda'][$id] = $new;
         $dados = $_SESSION['agenda'];
-        return view('agenda.index', compact('dados'));
+        return redirect()->route('agenda.index', compact('dados'));
     }
 
     /**
@@ -103,7 +106,7 @@ class AgendaController extends Controller
         session_start();
         $_SESSION['agenda'][$id] = $update;
         $dados = $_SESSION['agenda'];
-        return view('agenda.index', compact('dados'));
+        return redirect()->route('agenda.index', compact('dados'));
     }
 
     /**
@@ -117,6 +120,6 @@ class AgendaController extends Controller
         session_start();
         unset($_SESSION['agenda'][$id]);
         $dados = $_SESSION['agenda'];
-        return view('agenda.index', compact('dados'));
+        return redirect()->route('agenda.index', compact('dados'));
     }
 }
