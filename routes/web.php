@@ -5,6 +5,7 @@ use App\Http\Controllers\HojeController;
 use App\Http\Controllers\PiramideController;
 use App\Http\Controllers\ConeController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\ContatoController;
 
 
 /*
@@ -19,6 +20,7 @@ use App\Http\Controllers\AgendaController;
 */
 
 Route::resource('/agenda', AgendaController::class);
+Route::resource('/contato', ContatoController::class);
 
 Route::get('/tab/{n}/{i}/{f}', function ($n, $i, $f) {
     $resultado = '';
