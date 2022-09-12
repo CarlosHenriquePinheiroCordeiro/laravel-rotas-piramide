@@ -49,8 +49,7 @@ class AgendaController extends Controller
         );
         session_start();
         $_SESSION['agenda'][$id] = $new;
-        $dados = $_SESSION['agenda'];
-        return redirect()->route('agenda.index', compact('dados'));
+        return redirect()->route('agenda.index');
     }
 
     /**
@@ -62,11 +61,9 @@ class AgendaController extends Controller
     public function show($id)
     {
         session_start();
-        $show  = 'ID: '.$id.'<br>';
-        $show .= 'Nome: '.$_SESSION['agenda'][$id]['nome'].'<br>';
-        $show .= 'Telefone: '.$_SESSION['agenda'][$id]['telefone'].'<br>';
-        $show .= 'E-mail: '.$_SESSION['agenda'][$id]['email'].'<br>';
-        return $show;
+        $dados = $_SESSION['agenda'][$id];
+        $dados['visualizar'] = true;
+        return view('agenda.show', compact('dados'));
     }
 
     /**
@@ -105,8 +102,7 @@ class AgendaController extends Controller
         );
         session_start();
         $_SESSION['agenda'][$id] = $update;
-        $dados = $_SESSION['agenda'];
-        return redirect()->route('agenda.index', compact('dados'));
+        return redirect()->route('agenda.index');
     }
 
     /**
@@ -119,7 +115,6 @@ class AgendaController extends Controller
     {
         session_start();
         unset($_SESSION['agenda'][$id]);
-        $dados = $_SESSION['agenda'];
-        return redirect()->route('agenda.index', compact('dados'));
+        return redirect()->route('agenda.index');
     }
 }
