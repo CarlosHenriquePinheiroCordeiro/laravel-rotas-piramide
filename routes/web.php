@@ -6,6 +6,9 @@ use App\Http\Controllers\PiramideController;
 use App\Http\Controllers\ConeController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\MateriaController;
+use App\Http\Controllers\EstadoController;
+use App\Http\Controllers\TipoUsuarioController;
 
 
 /*
@@ -21,6 +24,9 @@ use App\Http\Controllers\ContatoController;
 
 Route::resource('/agenda', AgendaController::class);
 Route::resource('/contato', ContatoController::class);
+Route::resource('/materia', MateriaController::class);
+Route::resource('/estado', EstadoController::class);
+Route::resource('/tipoUsuario', TipoUsuarioController::class);
 
 Route::get('/tab/{n}/{i}/{f}', function ($n, $i, $f) {
     $resultado = '';

@@ -3,6 +3,11 @@
 @section('titulo', 'Listar Contatos')
 
 @section('conteudo')
+    <form action="{{route('contato.index')}}" method="get">
+        <label for="find">Nome</label>
+        <input type="text" id="find" name="find">
+        <button type="submit">Consultar</button>
+    </form>
     <table border="1">
         <th>ID</th><th>Nome</th><th>Telefone</th><th>Email</th><th>Ação</th>
         @foreach ($dados as $contato)

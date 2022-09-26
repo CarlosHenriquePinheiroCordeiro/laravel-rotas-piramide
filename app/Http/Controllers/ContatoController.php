@@ -14,7 +14,14 @@ class ContatoController extends Controller
      */
     public function index()
     {
-        $dados = Contato::all();
+        $dados = array();
+        if (request('find') != null)
+        {
+            $busca = request('find');
+            $dados = Contato::where('nome', 'like', "$busca%")->get();
+        }
+        else
+            $dados = Contato::all();
         return view('contato.index', compact('dados'));
     }
 
